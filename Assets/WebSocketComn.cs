@@ -27,7 +27,9 @@ public class WebSocketComn : MonoBehaviour {
 
     private void Ws_OnMessage(object sender, MessageEventArgs e) {
         print(e.Data);
-        Parts = new List<string>(e.Data.Split(','));
+        List<string> parts = new List<string>(e.Data.Split(','));
+        parts.Sort();
+        Parts = parts;
     }    
 
     void Update () {

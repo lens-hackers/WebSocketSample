@@ -7,7 +7,7 @@ using WebSocketSharp.Net;
 public class WebSocketComn : MonoBehaviour {
 
     public string IpAddress;
-    public PartsSelection PartsSelection = new PartsSelection();
+    public List<string> Parts;
     WebSocket ws;
 
 	void Start () {
@@ -27,8 +27,8 @@ public class WebSocketComn : MonoBehaviour {
 
     private void Ws_OnMessage(object sender, MessageEventArgs e) {
         print(e.Data);
-        JsonUtility.FromJsonOverwrite(e.Data, PartsSelection);
-    }
+        Parts = new List<string>(e.Data.Split(','));
+    }    
 
     void Update () {
 		
